@@ -522,6 +522,6 @@ openal32.dll
 sfml-audio-2.dll
 sfml-audio-d-2.dll
 
-*.sln
-*.vcxproj
-*.vcxproj.filters
+*Project.sln
+*Project.vcxproj
+*Project.vcxproj.filters
