@@ -1,15 +1,39 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
+#include "maze.h"
+
 using namespace std;
 using namespace sf;
 
 
 int main() {
-	sf::Window window(sf::VideoMode(800, 600), "The Maze Game");
+    int N = 30;
+    int cellSize = 25;
 
-	while (window.isOpen())
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
-			window.close();
+    sf::RenderWindow window(sf::VideoMode(N * cellSize, N * cellSize), "The Maze Runner");
+
+    Graph g(N * N);
+
+    Maze::setupMaze(N, g);
+    Maze::runDFS(g);
+    
+
+    while (window.isOpen()) {
+        
+        sf::Event event;
+        while (window.pollEvent(event)) {
+            if (event.type == sf::Event::Closed)
+                window.close();
+        }
+
+        window.clear(sf::Color::White);
+
+        Maze::drawMaze(window, cellSize, g);
+
+        window.display();
+    }
+
+    return 0;
 }
 
 

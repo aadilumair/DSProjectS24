@@ -14,6 +14,8 @@ private:
 	int noOfV;
 	std::vector<std::vector<GraphNode>> adj; // Adjacency list with coordinates
 
+	friend class Maze;
+
 public:
 	Graph(int vertices){
 		noOfV = vertices;
