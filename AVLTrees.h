@@ -7,47 +7,50 @@
 
 //code for AVLTrees
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
+template <typename T>
 class AVLNode {
 public:
-    int key;
-    AVLNode * left;
-    AVLNode * right;
+    T key;
+    AVLNode<T> *left;
+    AVLNode<T> *right;
     int height;
 
-    AVLNode(int key){
+    AVLNode(T key){
         this->key = key;
         this->left = this->right = NULL;
         this->height = 1;
     }
 };
 
+template <typename T>
 class AVLTree {
 public:
-    AVLNode * Root;
+    AVLNode<T> *Root;
 
-    int height(AVLNode * node) {
-        if (node == NULL){
+    int height(AVLNode<T> *node) {
+        if (node == nullptr) {
             return 0;
         }
         return node->height;
     }
 
-    int balanceFactor(AVLNode * node) {
-        if (node == NULL){
+    int balanceFactor(AVLNode<T> *node) {
+        if (node == nullptr) {
             return 0;
         }
         return height(node->left) - height(node->right);
     }
 
-    void updateHeight(AVLNode * node) {
+    void updateHeight(AVLNode<T> *node) {
         node->height = 1 + max(height(node->left), height(node->right));
     }
 
-    AVLNode* rightRotate(AVLNode * y) {
-        AVLNode * x = y->left;
-        AVLNode * T2 = x->right;
+    AVLNode<T>* rightRotate(AVLNode<T> *y) {
+        AVLNode<T> *x = y->left;
+        AVLNode<T> *T2 = x->right;
 
         x->right = y;
         y->left = T2;
@@ -58,9 +61,9 @@ public:
         return x;
     }
 
-    AVLNode* leftRotate(AVLNode * x) {
-        AVLNode *y = x->right;
-        AVLNode *T2 = y->left;
+    AVLNode<T>* leftRotate(AVLNode<T> *x) {
+        AVLNode<T> *y = x->right;
+        AVLNode<T> *T2 = y->left;
 
         y->left = x;
         x->right = T2;
@@ -71,9 +74,9 @@ public:
         return y;
     }
 
-    AVLNode* _insert(AVLNode *node, int key) {
+    AVLNode<T>* _insert(AVLNode<T> *node, T key) {
         if (node == nullptr)
-            return new AVLNode(key);
+            return new AVLNode<T>(key);
 
         if (key < node->key)
             node->left = _insert(node->left, key);
@@ -109,15 +112,15 @@ public:
         return node;
     }
 
-    AVLNode* minValueNode(AVLNode *node) {
-        AVLNode *current = node;
-        while (current->left != NULL)
+    AVLNode<T>* minValueNode(AVLNode<T> *node) {
+        AVLNode<T> *current = node;
+        while (current->left != nullptr)
             current = current->left;
         return current;
     }
 
-    AVLNode* _delete(AVLNode *root, int key) {
-        if (root == NULL)
+    AVLNode<T>* _delete(AVLNode<T> *root, T key) {
+        if (root == nullptr)
             return root;
 
         if (key < root->key)
@@ -125,12 +128,12 @@ public:
         else if (key > root->key)
             root->right = _delete(root->right, key);
         else {
-            if (root->left == NULL || root->right == NULL) {
-                AVLNode *temp = root->left ? root->left : root->right;
+            if (root->left == nullptr || root->right == nullptr) {
+                AVLNode<T> *temp = root->left ? root->left : root->right;
 
-                if (temp == NULL) {
+                if (temp == nullptr) {
                     temp = root;
-                    root = NULL;
+                    root = nullptr;
                 }
                 else
                     *root = *temp;
@@ -138,7 +141,7 @@ public:
                 delete temp;
             }
             else {
-                AVLNode *temp = minValueNode(root->right);
+                AVLNode<T> *temp = minValueNode(root->right);
 
                 root->key = temp->key;
 
@@ -146,7 +149,7 @@ public:
             }
         }
 
-        if (root == NULL)
+        if (root == nullptr)
             return root;
 
         updateHeight(root);
@@ -176,8 +179,8 @@ public:
         return root;
     }
 
-    AVLNode* _search(AVLNode *node, int key) {
-        if (node == NULL || node->key == key)
+    AVLNode<T>* _search(AVLNode<T> *node, T key) {
+        if (node == nullptr || node->key == key)
             return node;
 
         if (node->key < key)
@@ -186,8 +189,8 @@ public:
         return _search(node->left, key);
     }
 
-    void _inorder(AVLNode *node) {
-        if (node != NULL) {
+    void _inorder(AVLNode<T> *node) {
+        if (node != nullptr) {
             _inorder(node->left);
             cout << node->key << " ";
             _inorder(node->right);
@@ -195,20 +198,18 @@ public:
     }
 
 public:
-    AVLTree(){
-        Root = NULL;
-    }
+    AVLTree() : Root(nullptr) {}
 
-    void insert(int key) {
+    void insert(T key) {
         Root = _insert(Root, key);
     }
 
-    void remove(int key) {
+    void remove(T key) {
         Root = _delete(Root, key);
     }
 
-    bool search(int key) {
-        return _search(Root, key) != NULL;
+    bool search(T key) {
+        return _search(Root, key) != nullptr;
     }
 
     void inorder() {
