@@ -102,10 +102,10 @@ public:
 
 	static void drawMaze(sf::RenderWindow& window, int cellSize, Graph & g) {
 		sf::RectangleShape wall;
-		wall.setFillColor(sf::Color::Black);
+		wall.setFillColor(sf::Color::White);
 		wall.setSize(sf::Vector2f(cellSize, 2)); // Horizontal walls
 		sf::RectangleShape wallVertical;
-		wallVertical.setFillColor(sf::Color::Black);
+		wallVertical.setFillColor(sf::Color::White);
 		wallVertical.setSize(sf::Vector2f(2, cellSize)); // Vertical walls
 
 		for (int i = 0; i < g.noOfV; ++i) {
@@ -113,12 +113,12 @@ public:
 				GraphNode neighbour = g.adj[i][j];
 				// Draw horizontal walls
 				if (neighbour.coord.y == g.adj[i][0].coord.y && neighbour.coord.x == g.adj[i][0].coord.x + 1) {
-					wall.setPosition(sf::Vector2f(g.adj[i][0].coord.x * cellSize, g.adj[i][0].coord.y * cellSize + cellSize));
+					wall.setPosition(sf::Vector2f(g.adj[i][0].coord.x * cellSize + cellSize, g.adj[i][0].coord.y * cellSize + cellSize + cellSize));
 					window.draw(wall);
 				}
 				// Draw vertical walls
 				if (neighbour.coord.x == g.adj[i][0].coord.x && neighbour.coord.y == g.adj[i][0].coord.y + 1) {
-					wallVertical.setPosition(sf::Vector2f(g.adj[i][0].coord.x * cellSize + cellSize, g.adj[i][0].coord.y * cellSize));
+					wallVertical.setPosition(sf::Vector2f(g.adj[i][0].coord.x * cellSize + cellSize + cellSize, g.adj[i][0].coord.y * cellSize + cellSize));
 					window.draw(wallVertical);
 				}
 			}
