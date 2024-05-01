@@ -36,41 +36,41 @@ public:
 
         // Generate and add random bandages
         for (int i = 0; i < numBandages; ++i) {
-            int x = rand() % N;
-            int y = rand() % N;
-            Bandages* bandage = new Bandages(x * cellSize, y * cellSize);
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Bandages* bandage = new Bandages((x + 1) * cellSize, (y + 1) * cellSize);
             allItems.push_back(bandage);
         }
 
         // Generate and add random shields
         for (int i = 0; i < numShields; ++i) {
-            int x = rand() % N;
-            int y = rand() % N;
-            Shields* shield = new Shields(x * cellSize, y * cellSize);
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Shields* shield = new Shields((x + 1) * cellSize, (y + 1) * cellSize);
             allItems.push_back(shield);
         }
 
         // Generate and add random coins
         for (int i = 0; i < numCoins; ++i) {
-            int x = rand() % N;
-            int y = rand() % N;
-            Coins* coin = new Coins(x * cellSize, y * cellSize);
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Coins* coin = new Coins((x + 1) * cellSize, (y + 1) * cellSize);
             allItems.push_back(coin);
         }
 
         // Generate and add random hearts
         for (int i = 0; i < numHeart; ++i) {
-            int x = rand() % N;
-            int y = rand() % N;
-            Hearts* hearts = new Hearts(x * cellSize, y * cellSize);
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Hearts* hearts = new Hearts((x + 1) * cellSize, (y + 1) * cellSize);
             allItems.push_back(hearts);
         }
 
         // Generate and add random hearts
         for (int i = 0; i < numTreasure; ++i) {
-            int x = rand() % N;
-            int y = rand() % N;
-            Treasure* treasure = new Treasure(x * cellSize, y * cellSize);
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Treasure* treasure = new Treasure((x + 1) * cellSize, (y + 1) * cellSize);
             allItems.push_back(treasure);
         }
 
