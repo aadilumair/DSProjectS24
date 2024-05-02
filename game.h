@@ -25,7 +25,7 @@ public:
         Maze::runDFS(g);
 
         std::vector<items*> allItems; // Vector to hold all items (bandages, shields etc.)
-
+        std::vector<weapons*> allWeapons; // Vector to hold all items (bandages, shields etc.)
 
         // Generate random number of items (bandages, shields etc.)
         int numBandages = rand() % 5 + 1; // Random number of bandages between 1 and 5
@@ -33,6 +33,12 @@ public:
         int numCoins =  25;   // Random number of coins between 1 and 20
         int numHeart = rand() % 3 + 1; //Random number of hearts between 1 and 3
         int numTreasure = rand() % 3 + 1; //Random number of treasures between 1 and 3
+        // Generate random number of weapons (knives,axes etc.)
+        int numFists = 1; // Random number of bandages between 1 and 5
+        int numGrenades = rand() % 5 + 1; //Random number of treasures between 1 and 3
+        int numAxes = rand() % 2 + 1; // Random number of shields between 1 and 5
+        int numSpears = rand() % 2 + 1;   // Random number of coins between 1 and 20
+        int numKnives = rand() % 5 + 1; //Random number of hearts between 1 and 3
 
         // Generate and add random bandages
         for (int i = 0; i < numBandages; ++i) {
@@ -75,6 +81,18 @@ public:
         }
 
         Fists fistsInstance(850, 100);
+
+        // Generate and add random Grenades
+        for (int i = 0; i < numGrenades; ++i) {
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Grenades* grenades = new Grenades((x + 1) * cellSize, (y + 1) * cellSize);
+            allWeapons.push_back(grenades);
+        }
+
+        //salman starts working from here again
+
+
 
 
         while (window.isOpen()) {

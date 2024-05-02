@@ -9,6 +9,8 @@
 using namespace std;
 using namespace sf;
 
+string pathway = "/Users/salman/Desktop/ProjectS24/img/";
+
 //make a character and define its health
 //make a health bar and show on the game UI
 
@@ -44,7 +46,7 @@ public:
 class Bandages : public items{
 public:
     Bandages(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Bandages.png");
+        tex.loadFromFile(pathway+"Bandages.png");
         item.setTexture(tex);
         item.setScale(0.06, 0.06);
         item.setPosition(x, y);
@@ -60,7 +62,23 @@ public:
 class Shields : public items{
 public:
     Shields(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Shields.png");
+        tex.loadFromFile(pathway+"Shields.png");
+        item.setTexture(tex);
+        item.setScale(0.09, 0.09);
+        item.setPosition(x, y);
+
+        // Set properties specific to RedFood
+        health = 0;
+        shield = 25;
+        score = 0;
+        lives = 0;
+    }
+};
+
+class SlurpJ : public items{
+public:
+    SlurpJ(int x, int y){
+        tex.loadFromFile(pathway+"Shields.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -76,7 +94,7 @@ public:
 class Coins : public items{
 public:
     Coins(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Coins.png");
+        tex.loadFromFile(pathway+"Coins.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -92,7 +110,7 @@ public:
 class Treasure : public items{
 public:
     Treasure(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Treasure.png");
+        tex.loadFromFile(pathway+"Treasure.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -108,7 +126,7 @@ public:
 class Hearts : public items{
 public:
     Hearts(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Hearts.png");
+        tex.loadFromFile(pathway+"Hearts.png");
         item.setTexture(tex);
         item.setScale(0.2, 0.2);
         item.setPosition(x, y);
@@ -146,7 +164,7 @@ public:
 class Fists : public weapons{
 public:
     Fists(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/fists.png");
+        tex.loadFromFile(pathway+"fists.png");
         item.setTexture(tex);
         item.setScale(0.2, 0.2);
         item.setPosition(x, y);
@@ -160,7 +178,7 @@ public:
 class Grenades : public weapons{
 public:
     Grenades(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Shields.png");
+        tex.loadFromFile(pathway+"Shields.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -174,7 +192,7 @@ public:
 class Axe : public weapons{
 public:
     Axe(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Coins.png");
+        tex.loadFromFile(pathway+"Coins.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -188,7 +206,7 @@ public:
 class Spear : public weapons{
 public:
     Spear(int x, int y){
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Treasure.png");
+        tex.loadFromFile(pathway+"Treasure.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -202,7 +220,7 @@ public:
 class knives : public weapons {
 public:
     knives(int x, int y) {
-        tex.loadFromFile("/Users/salman/Desktop/ProjectS24/img/Hearts.png");
+        tex.loadFromFile(pathway+"Hearts.png");
         item.setTexture(tex);
         item.setScale(0.2, 0.2);
         item.setPosition(x, y);
@@ -213,9 +231,6 @@ public:
     }
 };
 
-//draw inventory
-void drawinventory(){
 
-}
 
 #endif //PROJECTS24_FUNC_H
