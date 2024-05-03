@@ -178,7 +178,7 @@ public:
 class Grenades : public weapons{
 public:
     Grenades(int x, int y){
-        tex.loadFromFile(pathway+"Shields.png");
+        tex.loadFromFile(pathway+"fists.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -192,7 +192,7 @@ public:
 class Axe : public weapons{
 public:
     Axe(int x, int y){
-        tex.loadFromFile(pathway+"Coins.png");
+        tex.loadFromFile(pathway+"fists.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -206,7 +206,7 @@ public:
 class Spear : public weapons{
 public:
     Spear(int x, int y){
-        tex.loadFromFile(pathway+"Treasure.png");
+        tex.loadFromFile(pathway+"fists.png");
         item.setTexture(tex);
         item.setScale(0.09, 0.09);
         item.setPosition(x, y);
@@ -220,7 +220,7 @@ public:
 class knives : public weapons {
 public:
     knives(int x, int y) {
-        tex.loadFromFile(pathway+"Hearts.png");
+        tex.loadFromFile(pathway+"fists.png");
         item.setTexture(tex);
         item.setScale(0.2, 0.2);
         item.setPosition(x, y);

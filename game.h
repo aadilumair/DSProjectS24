@@ -90,7 +90,29 @@ public:
             allWeapons.push_back(grenades);
         }
 
-        //salman starts working from here again
+        // Generate and add random Axes
+        for (int i = 0; i < numAxes; ++i) {
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Axe* axes = new Axe((x + 1) * cellSize, (y + 1) * cellSize);
+            allWeapons.push_back(axes);
+        }
+
+        // Generate and add random Spears
+        for (int i = 0; i < numSpears; ++i) {
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Spear* spears = new Spear((x + 1) * cellSize, (y + 1) * cellSize);
+            allWeapons.push_back(spears);
+        }
+
+        // Generate and add random Knives
+        for (int i = 0; i < numKnives; ++i) {
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            knives* knive = new knives((x + 1) * cellSize, (y + 1) * cellSize);
+            allWeapons.push_back(knive);
+        }
 
 
 
@@ -130,6 +152,11 @@ public:
             for (auto& item : allItems) {
                 window.draw(item->item);
             }
+            // Draw weapons
+            for (auto& weapon : allWeapons) {
+                window.draw(weapon->item);
+            }
+
 
             //displaying the inventory
             //call the avl and display it smh
@@ -139,10 +166,15 @@ public:
             window.display();
         }
 
-        // Clean up dynamically allocated memory
+        // Clean up dynamically allocated memory for consumables
         for (auto& item : allItems) {
             delete item;
         }
-	}
+        // Clean up dynamically allocated memory for weapons
+        for (auto& weapon : allWeapons) {
+            delete weapon;
+        }
+
+    }
 
 };
