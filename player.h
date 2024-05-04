@@ -18,7 +18,6 @@ public:
 	int shield;
 	int health;
 	sf::Sprite p;
-	
 	Player();
 	~Player();
 
@@ -66,7 +65,9 @@ void Player::move(std::string dir, sf::Image img) {
 	int ax = dx + p.getPosition().x;
 	int ay = dy + p.getPosition().y;
 
-	if (!(img.getPixel(ax, ay) == sf::Color::White))
+	const float scale = 0.07;
+	if (!(img.getPixel(ax, ay) == sf::Color::White) && !(img.getPixel(ax, ay + (300 * scale)) == sf::Color::White)
+		&& !(img.getPixel(ax + (200 * scale), ay) == sf::Color::White) && !(img.getPixel(ax + (200 * scale), ay + (300 * scale)) == sf::Color::White))
 		p.move(dx, dy);
 
 	
