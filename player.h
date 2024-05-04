@@ -2,7 +2,7 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
 
-std::string path = "img/";
+std::string path = "/Users/salman/Desktop/ProjectS24/img/";
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 

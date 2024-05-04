@@ -1,24 +1,25 @@
-#include<SFML/Graphics.hpp>
+#include</Users/salman/Desktop/SFML-2.6.1-macOS-clang-arm64/include/SFML/Graphics.hpp>
 #include<iostream>
 #include "game.h"
 
 using namespace std;
 using namespace sf;
 
-string pathFont ="";
+string pathFont ="/Users/salman/Desktop/ProjectS24/";
+string pathImg = "/Users/salman/Desktop/ProjectS24/img/";
 
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
 
 
 int main() {
     RenderWindow MainMenu(VideoMode(800, 600), "Main Menu");
+    Texture MainMenuT;
+    //resize the background image !
+    MainMenuT.loadFromFile(pathImg+"background.png");
+    sf::Sprite MainMenuS(MainMenuT);
 
     Font font;
     font.loadFromFile(pathFont+"Retro Gaming.ttf");
-
-    /*Text title("Main Menu", font, 50);
-    title.setPosition(250.f, 50.f);*/
-
 
     Text title;
     title.setFont(font); // font is a sf::Font
@@ -27,9 +28,6 @@ int main() {
     title.setCharacterSize(50);
     title.setFillColor(sf::Color::Black);
     title.setStyle(sf::Text::Bold);
-
-    /*Text playButton("Play", font, 30);
-    playButton.setPosition(350.f, 200.f);*/
 
     Text playButton;
     playButton.setFont(font); // font is a sf::Font
@@ -46,11 +44,6 @@ int main() {
     exitButton.setCharacterSize(30);
     exitButton.setFillColor(sf::Color::Black);
     exitButton.setStyle(sf::Text::Bold);
-
-    /*Text exitButton("Exit", font, 30);
-    exitButton.setPosition(350.f, 300.f);*/
-
-
 
     while (MainMenu.isOpen())
     {
@@ -70,7 +63,6 @@ int main() {
                     {
                         cout << "Play button clicked!" << endl;
                         // game will start etc.
-                        // add tehse two lines smwehre accordingly
                            Game g;
                            g.startGame();
                     }
@@ -84,6 +76,7 @@ int main() {
         }
 
         MainMenu.clear(Color::White);
+        MainMenu.draw(MainMenuS);
 
         MainMenu.draw(title);
         MainMenu.draw(playButton);
