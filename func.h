@@ -10,8 +10,8 @@
 using namespace std;
 using namespace sf;
 
-string pathway = "img/";
-string fontpath ="";
+string pathway = "/Users/salman/Desktop/ProjectS24/img/";
+string fontpath ="/Users/salman/Desktop/ProjectS24/";
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
@@ -27,6 +27,7 @@ public:
     int shield;
     int score;
     int lives;
+    int priority;
 
     //creating a sprite to display the item
     Sprite item;
@@ -44,6 +45,9 @@ public:
     }
     int getExtraLives(){
         return lives;
+    }
+    void ChangePos(items temp){
+        temp.item.setPosition(1000,100);
     }
 
     float getAbs() {
@@ -81,6 +85,7 @@ public:
         shield = 0;
         score = 0;
         lives = 0;
+        priority = 1;
     }
 };
 
@@ -97,22 +102,7 @@ public:
         shield = 25;
         score = 0;
         lives = 0;
-    }
-};
-
-class SlurpJ : public items{
-public:
-    SlurpJ(int x, int y){
-        tex.loadFromFile(pathway+"Shields.png");
-        item.setTexture(tex);
-        item.setScale(0.09, 0.09);
-        item.setPosition(x, y);
-
-        // Set properties specific to RedFood
-        health = 0;
-        shield = 25;
-        score = 0;
-        lives = 0;
+        priority = 2;
     }
 };
 
@@ -129,6 +119,7 @@ public:
         shield = 0;
         score = 100;
         lives = 0;
+        priority = 3;
     }
 };
 
@@ -145,6 +136,7 @@ public:
         shield = 0;
         score = 100;
         lives = 0;
+        priority = 4;
     }
 };
 
@@ -161,6 +153,7 @@ public:
         shield = 0;
         score = 0;
         lives = 1;
+        priority = 5;
     }
 };
 //items class ends here
@@ -172,6 +165,7 @@ public:
     //properties of the items (could be one or more)
     int uses;
     int damage;
+    int priority;
 
     //creating a sprite to display the item
     Sprite item;
@@ -198,6 +192,7 @@ public:
         // Set properties specific to RedFood
         uses = 20000;
         damage = 10;
+        priority = 1;
     }
 };
 
@@ -212,6 +207,7 @@ public:
         // Set properties specific to RedFood
         uses = 1;
         damage = 50;
+        priority = 2;
     }
 };
 
@@ -226,6 +222,7 @@ public:
         // Set properties specific to RedFood
         uses = 20;
         damage = 50;
+        priority = 3;
     }
 };
 
@@ -240,6 +237,7 @@ public:
         // Set properties specific to RedFood
         uses = 5;
         damage = 15;
+        priority = 4;
     }
 };
 

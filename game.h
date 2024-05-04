@@ -2,7 +2,7 @@
 #include "maze.h"
 #include "func.h"
 #include "player.h"
-#include <SFML/Graphics.hpp>
+#include </Users/salman/Desktop/SFML-2.6.1-macOS-clang-arm64/include/SFML/Graphics.hpp>
 
 class Game
 {

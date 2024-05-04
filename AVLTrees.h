@@ -8,6 +8,8 @@
 //code for AVLTrees
 #include <iostream>
 #include <algorithm>
+#include "func.h"
+#include <queue>
 using namespace std;
 
 template <typename T>
@@ -78,7 +80,7 @@ public:
         if (node == nullptr)
             return new AVLNode<T>(key);
 
-        if (key < node->key)
+        if (key <= node->key)
             node->left = _insert(node->left, key);
         else if (key > node->key)
             node->right = _insert(node->right, key);
@@ -217,5 +219,6 @@ public:
         cout << endl;
     }
 };
+
 
 #endif //PROJECTS24_AVLTREES_H
