@@ -6,6 +6,7 @@
 #define PROJECTS24_FUNC_H
 #include<SFML/Graphics.hpp>
 #include<iostream>
+#include<cmath>
 using namespace std;
 using namespace sf;
 
@@ -40,6 +41,26 @@ public:
     }
     int getExtraLives(){
         return lives;
+    }
+
+    float getAbs() {
+        return sqrt(pow(item.getPosition().x, 2) + pow(item.getPosition().y, 2));
+    }
+
+    bool operator<(items other) {
+        return this->getAbs() < other.getAbs();
+    }
+
+    bool operator<=(items other) {
+        return this->getAbs() <= other.getAbs();
+    }
+
+    bool operator>(items other) {
+        return !(*this < other);
+    }
+
+    bool operator>(items other) {
+        return !(*this > other);
     }
 };
 
