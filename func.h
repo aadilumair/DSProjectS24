@@ -10,8 +10,8 @@
 using namespace std;
 using namespace sf;
 
-string pathway = "/Users/salman/Desktop/ProjectS24/img/";
-string fontpath ="/Users/salman/Desktop/ProjectS24/";
+string pathway = "img/";
+string fontpath ="";
 
 //make a character and define its health
 //make a health bar and show on the game UI
@@ -59,8 +59,8 @@ public:
         return !(*this < other);
     }
 
-    bool operator>(items other) {
-        return !(*this > other);
+    bool operator>=(items other) {
+        return !(*this <= other);
     }
 };
 

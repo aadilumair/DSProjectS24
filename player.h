@@ -2,7 +2,7 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
 
-std::string path = "/Users/salman/Desktop/ProjectS24/img/";
+std::string path = "img/";
 
 
 class Player
