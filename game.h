@@ -110,7 +110,7 @@ public:
 
         Player player;
 
-
+        window.display();
         while (window.isOpen()) {
 
             sf::Event event;
@@ -161,18 +161,23 @@ public:
 
 
             //Moving and disp. of player
+            Texture test;
+            test.create(N* cellSize + 400, N* cellSize + 100);
+            test.update(window);
+            Image image = test.copyToImage();
+            
 
             if (Keyboard::isKeyPressed(Keyboard::Up)) {
-                player.move("u");
+                player.move("u", image);
             }
             if (Keyboard::isKeyPressed(Keyboard::Down)) {
-                player.move("d");
+                player.move("d", image);
             }
             if (Keyboard::isKeyPressed(Keyboard::Left)) {
-                player.move("l");
+                player.move("l", image);
             }
             if (Keyboard::isKeyPressed(Keyboard::Right)) {
-                player.move("r");
+                player.move("r", image);
             }
             window.draw(player.p);
 

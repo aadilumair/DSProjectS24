@@ -5,7 +5,7 @@
 using namespace std;
 using namespace sf;
 
-string pathFont ="/Users/salman/Desktop/ProjectS24/";
+string pathFont ="";
 
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
 

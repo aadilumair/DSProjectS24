@@ -2,7 +2,7 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
 
-std::string path = "/Users/salman/Desktop/ProjectS24/img/";
+std::string path = "img/";
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 
@@ -24,7 +24,7 @@ public:
 
 	//bool closeToAPoint(int x, int y);
 	std::string getStrHealth();
-	void move(std::string dir);
+	void move(std::string dir, sf::Image img);
 
 };
 
@@ -36,33 +36,40 @@ std::string Player::getStrHealth() {
 
 Player::Player()
 {
-	lives = 1;
+	lives = 3;
 	shield = 0;
-	speed = 0.2;
+	speed = 2;
 	health = 3;
-	std::cout<<pTexture.loadFromFile(path + "Spy.png");
+	pTexture.loadFromFile(path + "Spy.png");
 	p.setTexture(pTexture);
-	p.setPosition(25 / 2, 25 / 2);
-	p.setScale(0.09, 0.09);
+	p.setPosition(30 , 26);
+	p.setScale(0.07, 0.07);
 	
 	
 }
 
-void Player::move(std::string dir) {
-	std::cout << "(" << this->p.getPosition().x << ", " << this->p.getPosition().y << ")\n";
+void Player::move(std::string dir, sf::Image img) {
+	//std::cout << "(" << this->p.getPosition().x << ", " << this->p.getPosition().y << ")\n";
+	int dx = 0, dy = 0;
 	if (dir == "u") {
-		p.move(0, -1 * speed);
+		dy = -1 * speed;
 	}
 	if (dir == "d") {
-		p.move(0, 1 * speed);
+		dy = 1 * speed;
 	}
 	if (dir == "l") {
-		p.move(-1 * speed, 0);
+		dx = -1 * speed;
 	}
 	if (dir == "r") {
-		p.move(1 * speed, 0);
+		dx = 1 * speed;
 	}
+	int ax = dx + p.getPosition().x;
+	int ay = dy + p.getPosition().y;
 
+	if (!(img.getPixel(ax, ay) == sf::Color::White))
+		p.move(dx, dy);
+
+	
 }
 
 Player::~Player()

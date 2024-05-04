@@ -10,8 +10,8 @@
 using namespace std;
 using namespace sf;
 
-string pathway = "/Users/salman/Desktop/ProjectS24/img/";
-string fontpath ="/Users/salman/Desktop/ProjectS24/";
+string pathway = "img/";
+string fontpath ="";
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
