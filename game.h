@@ -37,7 +37,6 @@ public:
         int numFists = 1; // Random number of bandages between 1 and 5
         int numGrenades = rand() % 5 + 1; //Random number of treasures between 1 and 3
         int numAxes = rand() % 2 + 1; // Random number of shields between 1 and 5
-        int numSpears = rand() % 2 + 1;   // Random number of coins between 1 and 20
         int numKnives = rand() % 5 + 1; //Random number of hearts between 1 and 3
 
         // Generate and add random bandages
@@ -96,14 +95,6 @@ public:
             int y = rand() % (N - 1);
             Axe* axes = new Axe((x + 1) * cellSize, (y + 1) * cellSize);
             allWeapons.push_back(axes);
-        }
-
-        // Generate and add random Spears
-        for (int i = 0; i < numSpears; ++i) {
-            int x = rand() % (N - 1);
-            int y = rand() % (N - 1);
-            Spear* spears = new Spear((x + 1) * cellSize, (y + 1) * cellSize);
-            allWeapons.push_back(spears);
         }
 
         // Generate and add random Knives

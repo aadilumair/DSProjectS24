@@ -48,7 +48,7 @@ public:
     Bandages(int x, int y){
         tex.loadFromFile(pathway+"Bandages.png");
         item.setTexture(tex);
-        item.setScale(0.06, 0.06);
+        item.setScale(0.05, 0.05);
         item.setPosition(x, y);
 
         // Set properties specific to RedFood
@@ -112,7 +112,7 @@ public:
     Treasure(int x, int y){
         tex.loadFromFile(pathway+"Treasure.png");
         item.setTexture(tex);
-        item.setScale(0.09, 0.09);
+        item.setScale(0.06, 0.06);
         item.setPosition(x, y);
 
         // Set properties specific to RedFood
@@ -128,7 +128,7 @@ public:
     Hearts(int x, int y){
         tex.loadFromFile(pathway+"Hearts.png");
         item.setTexture(tex);
-        item.setScale(0.2, 0.2);
+        item.setScale(0.15, 0.15);
         item.setPosition(x, y);
 
         // Set properties specific to RedFood
@@ -178,9 +178,9 @@ public:
 class Grenades : public weapons{
 public:
     Grenades(int x, int y){
-        tex.loadFromFile(pathway+"fists.png");
+        tex.loadFromFile(pathway+"Grenades.png");
         item.setTexture(tex);
-        item.setScale(0.09, 0.09);
+        item.setScale(0.06, 0.06);
         item.setPosition(x, y);
 
         // Set properties specific to RedFood
@@ -192,9 +192,9 @@ public:
 class Axe : public weapons{
 public:
     Axe(int x, int y){
-        tex.loadFromFile(pathway+"fists.png");
+        tex.loadFromFile(pathway+"Axe.png");
         item.setTexture(tex);
-        item.setScale(0.09, 0.09);
+        item.setScale(0.06, 0.06);
         item.setPosition(x, y);
 
         // Set properties specific to RedFood
@@ -203,26 +203,12 @@ public:
     }
 };
 
-class Spear : public weapons{
-public:
-    Spear(int x, int y){
-        tex.loadFromFile(pathway+"fists.png");
-        item.setTexture(tex);
-        item.setScale(0.09, 0.09);
-        item.setPosition(x, y);
-
-        // Set properties specific to RedFood
-        uses = 1;
-        damage = 200;
-    }
-};
-
 class knives : public weapons {
 public:
     knives(int x, int y) {
-        tex.loadFromFile(pathway+"fists.png");
+        tex.loadFromFile(pathway+"Knives.png");
         item.setTexture(tex);
-        item.setScale(0.2, 0.2);
+        item.setScale(0.09, 0.09);
         item.setPosition(x, y);
 
         // Set properties specific to RedFood
