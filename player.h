@@ -2,7 +2,7 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
 
-std::string path = ".\\img\\";
+std::string path = "/Users/salman/Desktop/ProjectS24/img/";
 
 
 class Player
@@ -42,7 +42,7 @@ Player::Player()
 	std::cout<<pTexture.loadFromFile(path + "Spy.png");
 	p.setTexture(pTexture);
 	p.setPosition(25 / 2, 25 / 2);
-	p.setScale(10, 10);
+	p.setScale(0.09, 0.09);
 	
 	
 }
