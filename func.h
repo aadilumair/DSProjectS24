@@ -6,11 +6,12 @@
 #define PROJECTS24_FUNC_H
 #include<SFML/Graphics.hpp>
 #include<iostream>
+#include<cmath>
 using namespace std;
 using namespace sf;
 
-string pathway = "/Users/salman/Desktop/ProjectS24/img/";
-string fontpath ="/Users/salman/Desktop/ProjectS24/";
+string pathway = "img/";
+string fontpath ="";
 
 //make a character and define its health
 //make a health bar and show on the game UI
@@ -40,6 +41,26 @@ public:
     }
     int getExtraLives(){
         return lives;
+    }
+
+    float getAbs() {
+        return sqrt(pow(item.getPosition().x, 2) + pow(item.getPosition().y, 2));
+    }
+
+    bool operator<(items other) {
+        return this->getAbs() < other.getAbs();
+    }
+
+    bool operator<=(items other) {
+        return this->getAbs() <= other.getAbs();
+    }
+
+    bool operator>(items other) {
+        return !(*this < other);
+    }
+
+    bool operator>=(items other) {
+        return !(*this <= other);
     }
 };
 
