@@ -10,6 +10,7 @@ using namespace std;
 using namespace sf;
 
 string pathway = "/Users/salman/Desktop/ProjectS24/img/";
+string fontpath ="/Users/salman/Desktop/ProjectS24/";
 
 //make a character and define its health
 //make a health bar and show on the game UI
@@ -140,6 +141,7 @@ public:
 };
 //items class ends here
 
+//-----------------WEAPONS-----------------
 //weapons class and derive grenades etc. from it
 class weapons {
 public:
@@ -166,7 +168,7 @@ public:
     Fists(int x, int y){
         tex.loadFromFile(pathway+"fists.png");
         item.setTexture(tex);
-        item.setScale(0.2, 0.2);
+        item.setScale(0.18, 0.18);
         item.setPosition(x, y);
 
         // Set properties specific to RedFood
@@ -216,6 +218,107 @@ public:
         damage = 15;
     }
 };
+
+void drawinventory(sf::RenderWindow &window,sf::Font font){
+    Sprite grenadespr,axespr,knivesspr,infinityspr;
+    Texture grenadetex,axetex,knivestex,infinitytex;
+    Text grenT,axeT,knivesT,ScoreT;
+
+    Fists fistsInstance(850, 150);
+
+    infinitytex.loadFromFile(pathway+"infinity.png");
+    infinityspr.setTexture(infinitytex);
+    infinityspr.setScale(0.12, 0.12);
+    infinityspr.setPosition(937, 145);
+    window.draw(infinityspr);
+
+
+
+    //std::to_string(countercallfromAVL);
+    grenT.setFont(font); // font is a sf::Font
+    grenT.setString("0");
+    grenT.setPosition(945,218);
+    grenT.setCharacterSize(45);
+    grenT.setFillColor(sf::Color::White);
+    grenT.setStyle(sf::Text::Bold);
+
+    axeT.setFont(font); // font is a sf::Font
+    axeT.setString("0");
+    axeT.setPosition(945,293);
+    axeT.setCharacterSize(45);
+    axeT.setFillColor(sf::Color::White);
+    axeT.setStyle(sf::Text::Bold);
+
+    knivesT.setFont(font); // font is a sf::Font
+    knivesT.setString("0");
+    knivesT.setPosition(945,368);
+    knivesT.setCharacterSize(45);
+    knivesT.setFillColor(sf::Color::White);
+    knivesT.setStyle(sf::Text::Bold);
+
+    ScoreT.setFont(font); // font is a sf::Font
+    ScoreT.setString("SCORE: 0");
+    ScoreT.setPosition(810, 473);
+    ScoreT.setCharacterSize(45);
+    ScoreT.setFillColor(sf::Color::White);
+    ScoreT.setStyle(sf::Text::Bold);
+
+    grenadetex.loadFromFile(pathway+"Grenades.png");
+    grenadespr.setTexture(grenadetex);
+    grenadespr.setScale(0.16, 0.16);
+    grenadespr.setPosition(835, 207);
+    window.draw(grenadespr);
+
+    axetex.loadFromFile(pathway+"Axe.png");
+    axespr.setTexture(axetex);
+    axespr.setScale(0.16, 0.16);
+    axespr.setPosition(835, 285);
+    window.draw(axespr);
+
+    knivestex.loadFromFile(pathway+"Knives.png");
+    knivesspr.setTexture(knivestex);
+    knivesspr.setScale(0.3, 0.3);
+    knivesspr.setPosition(837, 363);
+    window.draw(knivesspr);
+
+    window.draw(fistsInstance.item);
+    window.draw(axeT);
+    window.draw(grenT);
+    window.draw(knivesT);
+    window.draw(ScoreT);
+
+}
+
+void drawhealthbar(sf::RenderWindow &window,sf::Font font){
+    Sprite HealthSpr,ShieldSpr;
+    Texture HealthTex,ShieldTex;
+
+    HealthTex.loadFromFile(pathway+"Hearts.png");
+    HealthSpr.setTexture(HealthTex);
+    HealthSpr.setScale(0.3, 0.3);
+    HealthSpr.setPosition(785, 25);
+    window.draw(HealthSpr);
+
+    ShieldTex.loadFromFile(pathway+"Shields.png");
+    ShieldSpr.setTexture(ShieldTex);
+    ShieldSpr.setScale(0.15, 0.15);
+    ShieldSpr.setPosition(795, 85);
+    window.draw(ShieldSpr);
+}
+
+void drawsidebar(sf::RenderWindow &window){
+    sf::Font font;
+    if (!font.loadFromFile(fontpath+"Retro Gaming.ttf"))
+    {
+        cout<<"Font not Loaded !\n";
+    }
+
+    drawinventory(window,font);
+    drawhealthbar(window,font);
+
+}
+
+
 
 
 

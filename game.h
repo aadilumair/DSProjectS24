@@ -17,13 +17,14 @@ public:
 
 
 	void startGame() {
-        sf::RenderWindow window(sf::VideoMode(N * cellSize + 300, N * cellSize + 100), "The Maze Runner");
+        sf::RenderWindow window(sf::VideoMode(N * cellSize + 400, N * cellSize + 100), "The Maze Runner");
 
         Graph g(N * N);
 
         Maze::setupMaze(N, g);
         Maze::runDFS(g);
 
+        //-------------setting up items,weapons and inventory-------------------
         std::vector<items*> allItems; // Vector to hold all items (bandages, shields etc.)
         std::vector<weapons*> allWeapons; // Vector to hold all items (bandages, shields etc.)
 
@@ -79,8 +80,6 @@ public:
             allItems.push_back(treasure);
         }
 
-        Fists fistsInstance(850, 100);
-
         // Generate and add random Grenades
         for (int i = 0; i < numGrenades; ++i) {
             int x = rand() % (N - 1);
@@ -104,7 +103,9 @@ public:
             knives* knive = new knives((x + 1) * cellSize, (y + 1) * cellSize);
             allWeapons.push_back(knive);
         }
+        //-------------setting up items,weapons and inventory-------------------
 
+        //------------------------setting up font------------------------
 
 
 
@@ -147,12 +148,15 @@ public:
             for (auto& weapon : allWeapons) {
                 window.draw(weapon->item);
             }
-
-
             //displaying the inventory
-            //call the avl and display it smh
-            //displayed fists for now
-            window.draw(fistsInstance.item);
+            //call the avl and display it smh (still needs to be done, display numbers !)
+            //check for collisions, add item/weapon to AVL, count no. of items in AVL and display next
+            //to the images
+            //display health bar and shields
+            drawsidebar(window);
+
+            //displaying text
+
 
             window.display();
         }
