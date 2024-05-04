@@ -4,7 +4,7 @@
 #include <stack>
 #include <vector>
 #include <random>
-#include </Users/salman/Desktop/SFML-2.6.1-macOS-clang-arm64/include/SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class Maze
 {

@@ -1,6 +1,7 @@
 #pragma once
 #include "maze.h"
 #include "func.h"
+#include "player.h"
 #include <SFML/Graphics.hpp>
 
 class Game
@@ -105,8 +106,9 @@ public:
         }
         //-------------setting up items,weapons and inventory-------------------
 
-        //------------------------setting up font------------------------
+        //------------------------setting up Player------------------------
 
+        Player player;
 
 
         while (window.isOpen()) {
@@ -157,6 +159,22 @@ public:
 
             //displaying text
 
+
+            //Moving and disp. of player
+
+            if (Keyboard::isKeyPressed(Keyboard::Up)) {
+                player.move("u");
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Down)) {
+                player.move("d");
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Left)) {
+                player.move("l");
+            }
+            if (Keyboard::isKeyPressed(Keyboard::Right)) {
+                player.move("r");
+            }
+            window.draw(player.p);
 
             window.display();
         }
