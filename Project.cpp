@@ -7,6 +7,8 @@ using namespace sf;
 
 string pathFont ="/Users/salman/Desktop/ProjectS24/";
 
+//pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
+
 
 int main() {
     RenderWindow MainMenu(VideoMode(800, 600), "Main Menu");

@@ -10,8 +10,11 @@
 using namespace std;
 using namespace sf;
 
-string pathway = "img/";
-string fontpath ="";
+string pathway = "/Users/salman/Desktop/ProjectS24/img/";
+string fontpath ="/Users/salman/Desktop/ProjectS24/";
+
+//pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
+//pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
 
 //make a character and define its health
 //make a health bar and show on the game UI
