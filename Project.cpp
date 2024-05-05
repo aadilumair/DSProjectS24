@@ -1,12 +1,12 @@
-#include</Users/salman/Desktop/SFML-2.6.1-macOS-clang-arm64/include/SFML/Graphics.hpp>
+#include<SFML/Graphics.hpp>
 #include<iostream>
 #include "game.h"
 
 using namespace std;
 using namespace sf;
 
-string pathFont ="/Users/salman/Desktop/ProjectS24/";
-string pathImg = "/Users/salman/Desktop/ProjectS24/img/";
+string pathFont ="";
+string pathImg = "img/";
 
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
 
@@ -61,14 +61,12 @@ int main() {
 
                     if (playButton.getGlobalBounds().contains(mousePos))
                     {
-                        cout << "Play button clicked!" << endl;
                         // game will start etc.
                            Game g;
                            g.startGame();
                     }
                     else if (exitButton.getGlobalBounds().contains(mousePos))
                     {
-                        cout << "Exit button clicked!" << endl;
                         MainMenu.close();
                     }
                 }

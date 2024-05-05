@@ -1,8 +1,9 @@
 #pragma once
 #include "maze.h"
+#include "enemy.h"
 #include "func.h"
 #include "player.h"
-#include </Users/salman/Desktop/SFML-2.6.1-macOS-clang-arm64/include/SFML/Graphics.hpp>
+#include <SFML/Graphics.hpp>
 
 class Game
 {
@@ -13,7 +14,7 @@ private:
 
 public:
     Game() :N(30), g(N* N), cellSize(25) {
-
+        srand(time(0));
     }
 
 
@@ -106,6 +107,16 @@ public:
         }
         //-------------setting up items,weapons and inventory-------------------
 
+        std::vector<Enemy *> eneList;
+        int noOfEne = /*(rand() % 20) +*/ 10;
+        for (int i = 0; i < noOfEne; ++i) {
+            int x = rand() % (N - 1);
+            int y = rand() % (N - 1);
+            Enemy*ene = new Enemy((x + 1) * cellSize, (y + 1) * cellSize);
+            eneList.push_back(ene);
+        }
+
+
         //------------------------setting up Player------------------------
 
         Player player;
@@ -150,6 +161,11 @@ public:
             for (auto& weapon : allWeapons) {
                 window.draw(weapon->item);
             }
+
+            for (int i = 0; i < noOfEne; i++) {
+                window.draw(eneList[i]->ene);
+            }
+
             //displaying the inventory
             //call the avl and display it smh (still needs to be done, display numbers !)
             //check for collisions, add item/weapon to AVL, count no. of items in AVL and display next

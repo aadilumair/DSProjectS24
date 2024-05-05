@@ -2,7 +2,7 @@
 #include<SFML/Graphics.hpp>
 #include<iostream>
 
-std::string path = "/Users/salman/Desktop/ProjectS24/img/";
+std::string path = "img/";
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 
@@ -38,7 +38,7 @@ Player::Player()
 	lives = 3;
 	shield = 0;
 	speed = 2;
-	health = 3;
+	health = 100;
 	pTexture.loadFromFile(path + "Spy.png");
 	p.setTexture(pTexture);
 	p.setPosition(30 , 26);
