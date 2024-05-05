@@ -10,8 +10,8 @@
 using namespace std;
 using namespace sf;
 
-string pathway = "img/";
-string fontpath ="";
+string pathway = "/Users/salman/Desktop/ProjectS24/img/";
+string fontpath ="/Users/salman/Desktop/ProjectS24/";
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
@@ -134,7 +134,7 @@ public:
         // Set properties specific to RedFood
         health = 0;
         shield = 0;
-        score = 100;
+        score = 500;
         lives = 0;
         priority = 4;
     }
@@ -244,7 +244,7 @@ public:
 void drawinventory(sf::RenderWindow &window,sf::Font font){
     Sprite grenadespr,axespr,knivesspr,infinityspr;
     Texture grenadetex,axetex,knivestex,infinitytex;
-    Text grenT,axeT,knivesT,ScoreT;
+    Text grenT,axeT,knivesT;
 
     Fists fistsInstance(850, 150);
 
@@ -253,8 +253,6 @@ void drawinventory(sf::RenderWindow &window,sf::Font font){
     infinityspr.setScale(0.12, 0.12);
     infinityspr.setPosition(937, 145);
     window.draw(infinityspr);
-
-
 
     //std::to_string(countercallfromAVL);
     grenT.setFont(font); // font is a sf::Font
@@ -278,13 +276,6 @@ void drawinventory(sf::RenderWindow &window,sf::Font font){
     knivesT.setFillColor(sf::Color::White);
     knivesT.setStyle(sf::Text::Bold);
 
-    ScoreT.setFont(font); // font is a sf::Font
-    ScoreT.setString("SCORE: 0");
-    ScoreT.setPosition(810, 473);
-    ScoreT.setCharacterSize(45);
-    ScoreT.setFillColor(sf::Color::White);
-    ScoreT.setStyle(sf::Text::Bold);
-
     grenadetex.loadFromFile(pathway+"Grenades.png");
     grenadespr.setTexture(grenadetex);
     grenadespr.setScale(0.16, 0.16);
@@ -307,7 +298,7 @@ void drawinventory(sf::RenderWindow &window,sf::Font font){
     window.draw(axeT);
     window.draw(grenT);
     window.draw(knivesT);
-    window.draw(ScoreT);
+
 
 }
 

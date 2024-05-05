@@ -5,8 +5,8 @@
 using namespace std;
 using namespace sf;
 
-string pathFont ="";
-string pathImg = "img/";
+string pathFont ="/Users/salman/Desktop/ProjectS24/";
+string pathImg = "/Users/salman/Desktop/ProjectS24/img/";
 
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
 

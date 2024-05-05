@@ -182,6 +182,15 @@ public:
             for (int i = 0; i < noOfEne; i++) {
                 checkCollisionEnemy(player, *eneList[i]);
             }
+            //checking collision with items
+            for (auto& item : allItems) {
+                player.checkCollisionwItems(*item);
+            }
+            for (auto& weapons : allWeapons) {
+                player.checkCollisionwWeapons(*weapons);
+            }
+
+            player.drawScore(window);
 
 
             //Moving and disp. of player

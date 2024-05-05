@@ -4,7 +4,7 @@
 #include<random>
 #include<time.h>
 
-std::string enePath = "img/";
+std::string enePath = "/Users/salman/Desktop/DSProjectS24/img/";
 
 class Enemy
 {
