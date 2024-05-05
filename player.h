@@ -4,8 +4,8 @@
 #include<iostream>
 #include "func.h"
 
-std::string path = "/Users/salman/Desktop/ProjectS24/img/";
-std::string pathforFont = "/Users/salman/Desktop/ProjectS24";
+std::string path = "img/";
+std::string pathforFont = "";
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 class Player;

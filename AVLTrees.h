@@ -10,6 +10,7 @@
 #include <algorithm>
 #include "func.h"
 #include <queue>
+#include "Stack.h"
 using namespace std;
 
 template <typename T>
@@ -31,6 +32,47 @@ template <typename T>
 class AVLTree {
 public:
     AVLNode<T> *Root;
+    int count;
+
+    T& operator[](int index) {
+        int currentIndex = 0;
+        return atIndex(index);
+    }
+    // Utility function to calculate the size of the tree
+    int size(AVLNode<T>* node) {
+        if (node == nullptr)
+            return 0;
+        return 1 + size(node->left) + size(node->right);
+    }
+
+   
+
+    T& atIndex(int index) {
+        if (Root == nullptr || index < 0)
+            throw out_of_range("Index out of range");
+
+        Stack<AVLNode<T>*> stack;
+        AVLNode<T>* current = Root;
+        int currentIndex = 0;
+
+        while (!stack.empty() || current != nullptr) {
+            while (current != nullptr) {
+                stack.push(current);
+                current = current->left;
+            }
+
+            current = stack.top();
+            stack.pop();
+
+            if (currentIndex == index)
+                return current->key;
+
+            currentIndex++;
+            current = current->right;
+        }
+
+        throw out_of_range("Index out of range");
+    }
 
     int height(AVLNode<T> *node) {
         if (node == nullptr) {
@@ -92,7 +134,7 @@ public:
         int balance = balanceFactor(node);
 
         // Left Left Case (LL)
-        if (balance > 1 && key < node->left->key)
+        if (balance > 1 && key <= node->left->key)
             return rightRotate(node);
 
         // Right Right Case (RR)
@@ -125,7 +167,7 @@ public:
         if (root == nullptr)
             return root;
 
-        if (key < root->key)
+        if (key <= root->key)
             root->left = _delete(root->left, key);
         else if (key > root->key)
             root->right = _delete(root->right, key);
@@ -185,7 +227,7 @@ public:
         if (node == nullptr || node->key == key)
             return node;
 
-        if (node->key < key)
+        if (node->key <= key)
             return _search(node->right, key);
 
         return _search(node->left, key);
@@ -194,20 +236,27 @@ public:
     void _inorder(AVLNode<T> *node) {
         if (node != nullptr) {
             _inorder(node->left);
-            cout << node->key << " ";
+            node->key.out();
             _inorder(node->right);
         }
     }
 
 public:
-    AVLTree() : Root(nullptr) {}
+    AVLTree() : Root(nullptr) {
+        count = 0;
+    }
 
     void insert(T key) {
         Root = _insert(Root, key);
+        count++;
     }
 
     void remove(T key) {
         Root = _delete(Root, key);
+        if (Root == nullptr)
+            count = 0;
+        else
+            count--;
     }
 
     bool search(T key) {
