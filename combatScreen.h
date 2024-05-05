@@ -24,7 +24,8 @@ public:
 
 			window.clear(sf::Color::Black);
 			drawsidebar(window);
-			
+			window.draw(play.p);
+			window.draw(ene.ene);
 			window.display();
 		}
 		return true;
