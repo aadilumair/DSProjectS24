@@ -176,7 +176,7 @@ public:
                 window.draw(weapon->item);
             }
 
-            for (int i = 0; i < noOfEne; i++) {
+            for (int i = 0; i < eneList.size(); i++) {
                 window.draw(eneList[i]->ene);
             }
 
@@ -188,7 +188,7 @@ public:
             drawsidebar(window);
 
             //checking collision with enemy
-            for (int i = 0; i < noOfEne; i++) {
+            for (int i = 0; i < eneList.size(); i++) {
                 checkCollisionEnemy(player, i,eneList);
             }
 
