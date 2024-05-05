@@ -17,6 +17,11 @@ public:
         srand(time(0));
     }
 
+    void checkCollisionEnemy(Player play, Enemy ene) {
+
+        if (play.p.getGlobalBounds().intersects(ene.ene.getGlobalBounds()))
+            std::cout << "COLLLISION\n";
+    }
 
 	void startGame() {
         sf::RenderWindow window(sf::VideoMode(N * cellSize + 400, N * cellSize + 100), "The Maze Runner");
@@ -173,7 +178,10 @@ public:
             //display health bar and shields
             drawsidebar(window);
 
-            //displaying text
+            //checking collision with enemy
+            for (int i = 0; i < noOfEne; i++) {
+                checkCollisionEnemy(player, *eneList[i]);
+            }
 
 
             //Moving and disp. of player
