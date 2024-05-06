@@ -6,6 +6,8 @@
 
 std::string enePath = "img/";
 
+int F = 6;
+
 class Enemy
 {
 public:

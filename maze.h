@@ -6,6 +6,8 @@
 #include <random>
 #include <SFML/Graphics.hpp>
 
+int G =7;
+
 class Maze
 {
 public:

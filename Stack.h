@@ -4,6 +4,8 @@
 
 using namespace std;
 
+int HJ = 90;
+
 template <typename T>
 class Stack 
 {

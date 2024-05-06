@@ -13,6 +13,8 @@ using namespace sf;
 string pathway = "img/";
 string fontpath ="";
 
+int E =5;
+
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 //pathway for fonts for salman: /Users/salman/Desktop/ProjectS24/
 
@@ -253,28 +255,6 @@ void drawinventory(sf::RenderWindow &window,sf::Font font){
     infinityspr.setScale(0.12, 0.12);
     infinityspr.setPosition(937, 145);
     window.draw(infinityspr);
-
-    //std::to_string(countercallfromAVL);
-    grenT.setFont(font); // font is a sf::Font
-    grenT.setString("0");
-    grenT.setPosition(945,218);
-    grenT.setCharacterSize(45);
-    grenT.setFillColor(sf::Color::White);
-    grenT.setStyle(sf::Text::Bold);
-
-    axeT.setFont(font); // font is a sf::Font
-    axeT.setString("0");
-    axeT.setPosition(945,293);
-    axeT.setCharacterSize(45);
-    axeT.setFillColor(sf::Color::White);
-    axeT.setStyle(sf::Text::Bold);
-
-    knivesT.setFont(font); // font is a sf::Font
-    knivesT.setString("0");
-    knivesT.setPosition(945,368);
-    knivesT.setCharacterSize(45);
-    knivesT.setFillColor(sf::Color::White);
-    knivesT.setStyle(sf::Text::Bold);
 
     grenadetex.loadFromFile(pathway+"Grenades.png");
     grenadespr.setTexture(grenadetex);

@@ -6,28 +6,34 @@
 #include "combatScreen.h"
 #include <SFML/Graphics.hpp>
 
+string imagepathway = "img/";
+int A = 0;
+
 class Game
 {
 private:
 	int N;
     int cellSize;
 	Graph g;
+    sf::Music backgroundMusic;
 
 public:
     Game() :N(30), g(N* N), cellSize(25) {
         srand(time(0));
+
     }
 
-    void checkCollisionEnemy(Player &play, int i, vector<Enemy *> &eneList) {
+    bool checkCollisionEnemy(Player &play, int i, vector<Enemy *> &eneList) {
         Enemy ene = *eneList[i];
         if (play.p.getGlobalBounds().intersects(ene.ene.getGlobalBounds())) {
             combat cmb;
             if (cmb.startCombat(N, cellSize, play, ene)) {
                 //won combat
                 eneList.erase(eneList.begin() + i);
+                return false;
             }
             else {
-                //lost combat shut game
+                return true;
             }
         }
     }
@@ -35,7 +41,21 @@ public:
 	void startGame() {
         sf::RenderWindow window(sf::VideoMode(N * cellSize + 400, N * cellSize + 100), "The Maze Runner");
 
+        // Load the background music from file
+        if (!backgroundMusic.openFromFile("GameMusic.ogg")) {
+            // Error handling if the file fails to load
+            std::cerr << "Failed to load background music!" << std::endl;
+        }
+        backgroundMusic.play();
+
         Graph g(N * N);
+
+        sf::Texture backgroundTexture;
+        if (!backgroundTexture.loadFromFile(imagepathway+"Background.png")) {
+            // Handle error loading texture
+        }
+
+        sf::Sprite backgroundSprite(backgroundTexture);
 
         Maze::setupMaze(N, g);
         Maze::runDFS(g);
@@ -140,11 +160,12 @@ public:
 
             sf::Event event;
             while (window.pollEvent(event)) {
-                if (event.type == sf::Event::Closed)
+                if (event.type == sf::Event::Closed || player.lives==0)
                     window.close();
             }
 
             window.clear(sf::Color::Black);
+            window.draw(backgroundSprite);
 
             sf::RectangleShape wallN;
             wallN.setFillColor(sf::Color::White);
@@ -181,17 +202,29 @@ public:
             }
 
             //displaying the inventory
-            //call the avl and display it smh (still needs to be done, display numbers !)
-            //check for collisions, add item/weapon to AVL, count no. of items in AVL and display next
-            //to the images
-            //display health bar and shields
             drawsidebar(window);
 
             //checking collision with enemy
             for (int i = 0; i < eneList.size(); i++) {
                 checkCollisionEnemy(player, i,eneList);
             }
-            //checking collision with items
+
+            //displaying defeated enemies (done here cus file alr included)
+            sf::Font font;
+            if (!font.loadFromFile(fontpath+"Retro Gaming.ttf"))
+            {
+                cout<<"Font not Loaded !\n";
+            }
+            Text EnemiesT;
+            EnemiesT.setFont(font); // font is a sf::Font
+            EnemiesT.setString("ENEMIES: " + std::to_string(enemiesdef) );
+            EnemiesT.setPosition(810, 540);
+            EnemiesT.setCharacterSize(45);
+            EnemiesT.setFillColor(sf::Color::White);
+            EnemiesT.setStyle(sf::Text::Bold);
+            window.draw(EnemiesT);
+
+            //checking collision with items & weapons
             for (auto& item : allItems) {
                 player.checkCollisionwItems(*item);
             }

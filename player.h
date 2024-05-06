@@ -6,6 +6,11 @@
 
 std::string path = "img/";
 std::string pathforFont = "";
+int D =4;
+
+const int MAX_ITEMS = 100;
+const int MAX_WEAPONS = 100;
+
 
 //pathway for images for salman: /Users/salman/Desktop/ProjectS24/img/
 class Player;
@@ -24,6 +29,10 @@ public:
     //AVLTree<items> itemsTree; // AVL tree to store items
     //AVLTree<weapons> weaponsTree;
 	sf::Texture pTexture;
+    items itemsarr[MAX_ITEMS]; // Assuming MAX_ITEMS is the maximum number of items
+    weapons weaponsarr[MAX_WEAPONS]; // Assuming MAX_WEAPONS is the maximum number of weapons
+    int itemsCount; // Track the number of items in the array
+    int weaponsCount; // Track the number of weapons in the array
 	float speed;
 	int lives;
 	int shield;
@@ -44,8 +53,11 @@ public:
         item.item.setPosition(1000,1000);
 
         //updating player attributes here
-        if (item.priority == 1 || item.priority == 2){
-            //itemsTree.insert(item);
+        if (item.priority == 1){
+            health+= item.health;
+        }
+        else if (item.priority == 2){
+            shield+= item.shield;
         }
         else if (item.priority == 3 || item.priority ==4){
             //update player score here
@@ -65,8 +77,20 @@ public:
         weapon.item.setPosition(1000,1000);
 
         //updating player inventory here
-        //you will be inserting the weapons into AVLTree<weapons> weaponsTree; commented as a public member
+        if (weaponsCount < MAX_WEAPONS) {
+            weaponsarr[weaponsCount++] = weapon;
+        }
 
+    }
+
+    int countSpecificWeapon(weapons weaponsarr[], int weaponsCount, int priority) {
+        int count = 0;
+        for (int i = 0; i < weaponsCount; ++i) {
+            if (weaponsarr[i].priority == priority) {
+                count++;
+            }
+        }
+        return count;
     }
 
     void checkCollisionwItems(items& item) {
@@ -123,7 +147,7 @@ void Player::drawScore(sf::RenderWindow &window) {
     {
         cout<<"Font not Loaded !\n";
     }
-    Text ScoreT;
+    Text ScoreT,grenT,healthT,shieldT,axeT,knivesT,EnemiesT;
     ScoreT.setFont(font); // font is a sf::Font
     ScoreT.setString("SCORE: " + std::to_string(getscore()) );
     ScoreT.setPosition(810, 473);
@@ -131,6 +155,48 @@ void Player::drawScore(sf::RenderWindow &window) {
     ScoreT.setFillColor(sf::Color::White);
     ScoreT.setStyle(sf::Text::Bold);
     window.draw(ScoreT);
+
+    grenT.setFont(font); // font is a sf::Font
+    grenT.setString(std::to_string(countSpecificWeapon(weaponsarr,weaponsCount,2)));
+    grenT.setPosition(945,218);
+    grenT.setCharacterSize(45);
+    grenT.setFillColor(sf::Color::White);
+    grenT.setStyle(sf::Text::Bold);
+    window.draw(grenT);
+
+    axeT.setFont(font); // font is a sf::Font
+    axeT.setString(std::to_string(countSpecificWeapon(weaponsarr,weaponsCount,3)));
+    axeT.setPosition(945,293);
+    axeT.setCharacterSize(45);
+    axeT.setFillColor(sf::Color::White);
+    axeT.setStyle(sf::Text::Bold);
+    window.draw(axeT);
+
+    knivesT.setFont(font); // font is a sf::Font
+    knivesT.setString(std::to_string(countSpecificWeapon(weaponsarr,weaponsCount,4)));
+    knivesT.setPosition(945,368);
+    knivesT.setCharacterSize(45);
+    knivesT.setFillColor(sf::Color::White);
+    knivesT.setStyle(sf::Text::Bold);
+    window.draw(knivesT);
+
+    healthT.setFont(font); // font is a sf::Font
+    healthT.setString(std::to_string(health));
+    healthT.setPosition(930,40);
+    healthT.setCharacterSize(30);
+    healthT.setFillColor(sf::Color::White);
+    healthT.setStyle(sf::Text::Bold);
+    window.draw(healthT);
+
+    shieldT.setFont(font); // font is a sf::Font
+    shieldT.setString(std::to_string(shield));
+    shieldT.setPosition(930,90);
+    shieldT.setCharacterSize(30);
+    shieldT.setFillColor(sf::Color::White);
+    shieldT.setStyle(sf::Text::Bold);
+    window.draw(shieldT);
+
+
 }
 
 
